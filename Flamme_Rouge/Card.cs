@@ -36,25 +36,55 @@ namespace Flamme_Rouge
             _number = number;   
             _exhaustion = exhaustion;
 
-            if (type == "Sprinter")
-            {
+            //sets the card number to 2 if it is an exhaustion card.
+            //if (exhaustion == true)
+            //{
+            //   _type = type;
+            //    _number = 2;
+            //    _exhaustion = exhaustion;
+            //}
+            ////checks if it is a spriter type of card 
+            //else if (type == "sprinter" && exhaustion == false)
+            //{
+            //    _type = type;              
+            //    _number = number;
+            //    _exhaustion = exhaustion;
 
-            }
-            else if (type == "Roller")
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("Sorry There seems to be an error please resart the game.");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Sorry There seems to be an error please resart the game.");
+            //}
         }
 
 
-        public void createCard()
+        /// <summary>
+        /// Creates a sprinter card with correct card numbers. 
+        /// </summary>
+        public void createSprinterCard()
         {
-
-
+            //checks if it an exhaustion card, if it is make it only 2. 
+            if (_exhaustion)
+            {
+                _number = 2;
+            }
+            //else creates a proper sprinter card 
+            else
+            {
+                //creates a new random number between 2 and 6 
+                Random rand = new Random();
+                int random = rand.Next(2,7);
+                //checks what the random number is and then sets the card number to the corrasponding number. 
+                switch (random)
+                {                 
+                    case 6:
+                        _number = 9;
+                        break;
+                    default:
+                        _number = random; 
+                        break;
+                }
+            }
         }
 
 

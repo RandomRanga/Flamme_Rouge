@@ -103,7 +103,8 @@ namespace Flamme_Rouge
 
 
             int xpos = 0;
-            //pictureBoxDraw.Refresh();
+            //draws each of the squares in the list and 
+            //after each one moves over 45
             foreach (Square s in track)
             {
                 s.DrawSquare(paper, xpos);

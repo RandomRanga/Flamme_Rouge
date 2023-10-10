@@ -51,6 +51,7 @@ namespace Flamme_Rouge
                 _min = 5;
             }
            
+           
 
         }
 
