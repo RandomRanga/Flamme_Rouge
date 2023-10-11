@@ -12,11 +12,23 @@ using System.Windows.Forms;
 
 namespace Flamme_Rouge
 {
+
+    
+
     public partial class Form1 : Form
     {
         //creates list of squares for the track
-        List<Square> track = new List<Square>();     
-        
+        List<Square> track = new List<Square>();
+
+        int xcur = 5;
+        int ycur = 50;
+        int length = 45;
+
+        Rider sprinterRider;
+
+        Rider rollerRider;
+
+        Graphics paper;
 
         public Form1()
         {
@@ -31,9 +43,9 @@ namespace Flamme_Rouge
         /// <param name="e"></param>
         private void buttonDrawTrack_Click(object sender, EventArgs e)
         {
-
             //creates the graphics for the track
-            Graphics paper = pictureBoxDraw.CreateGraphics();
+            paper = pictureBoxDraw.CreateGraphics();
+
             //holds the x pos of the squares.
             int xpos = 0;
             //how long you want the track
@@ -90,12 +102,15 @@ namespace Flamme_Rouge
             paper.DrawRectangle(pen1, 0, 0, pictureBoxDraw.Width - 2, pictureBoxDraw.Height - 2);
 
             //cretaes and draws a sprinter rider at the start line in bottom column 
-            Rider sprinterRider = new Rider(5, 50, false);
+            sprinterRider = new Rider(xcur, ycur, false);
             sprinterRider.DrawRiders(paper, Color.Red);
             //cretaes and draws a roller rider at the start line in bottom column 
-            Rider rollerRider = new Rider(50, 50, true);
+            rollerRider = new Rider(xcur + length, ycur, true);
             rollerRider.DrawRiders(paper, Color.Blue);
+
         }
+
+
 
         /// <summary>
         /// creates a new deck of sprinter cards and displays the hand
@@ -105,9 +120,9 @@ namespace Flamme_Rouge
         private void buttonSprinter_Click(object sender, EventArgs e)
         {
             //creates the deck of sprinter cards. 
-            Deck cardDeck = new Deck(false, false);
-            cardDeck.dealHand(listBoxCards);
-            cardDeck.displayDeck();
+            Deck sprinterCardDeck = new Deck(false, false);
+            sprinterCardDeck.dealHand(listBoxCards);
+            sprinterCardDeck.displayDeck();
         }
 
         /// <summary>
@@ -117,9 +132,9 @@ namespace Flamme_Rouge
         /// <param name="e"></param>
         private void buttonRoller_Click(object sender, EventArgs e)
         {
-            Deck cardDeck = new Deck(true, false);
-            cardDeck.dealHand(listBoxCards);
-            cardDeck.displayDeck();
+            Deck rollerCardDeck = new Deck(true, false);
+            rollerCardDeck.dealHand(listBoxCards);
+            rollerCardDeck.displayDeck();
         }
 
         /// <summary>
@@ -129,8 +144,20 @@ namespace Flamme_Rouge
         /// <param name="e"></param>
         private void listBoxCards_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("you rider moves " + listBoxCards.SelectedItem.ToString());
+            string card = listBoxCards.SelectedItem.ToString();
 
+            //creates the graphics for the track
+            paper = pictureBoxDraw.CreateGraphics();
+
+
+            xcur = rollerRider.moveRider(card, xcur, 1);
+            
+            //cretaes and draws a roller rider at the start line in bottom column 
+            rollerRider = new Rider(xcur, ycur, true);
+            rollerRider.DrawRiders(paper, Color.Blue);
+
+
+            
 
 
         }

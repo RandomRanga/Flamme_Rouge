@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Flamme_Rouge
 {
@@ -44,9 +45,43 @@ namespace Flamme_Rouge
 
         }
 
-        
+        /// <summary>
+        /// moves the rider based on the 
+        /// </summary>
+        /// <param name="xcur"></param>
+        /// <param name="ycur"></param>
+        /// <returns></returns>
+        public int moveRider(string card,int xcur, int moveSquares)
+        {
 
-       
+            string[] cardArray = card.Split(',');
+
+            if(cardArray[0] == "Roller")
+            {
+                xcur += 45;
+                
+            }
+            else if (cardArray[0] == "Sprinter")
+            {
+
+            }
+            else
+            {
+                MessageBox.Show(" Sorry something has gone wrong please try again.");
+            }
+
+
+
+            //xcur += (moveSquares * 45);
+
+
+
+            
+            return xcur;
+        }
+
+
+
 
 
     }

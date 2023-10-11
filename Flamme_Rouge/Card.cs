@@ -136,7 +136,7 @@ namespace Flamme_Rouge
             }
             
             //creates formated string. 
-            cardName += ", " + _value;
+            cardName += "," + _value;
             //returns the string of the well formated card. 
             return cardName;
         }
