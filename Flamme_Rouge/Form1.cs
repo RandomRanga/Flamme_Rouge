@@ -20,7 +20,7 @@ namespace Flamme_Rouge
 
         public Form1()
         {
-            InitializeComponent();                    
+            InitializeComponent();
         }
     
         /// <summary>
@@ -103,14 +103,19 @@ namespace Flamme_Rouge
             Pen pen1 = new Pen(Color.Blue, 1);
             paper.DrawRectangle(pen1, 0, 0, pictureBoxDraw.Width - 2, pictureBoxDraw.Height - 2);
 
-
-            Rider sprinterRider = new Rider(5, 5, false);
+            //cretaes and draws a sprinter rider at the start line in bottom column 
+            Rider sprinterRider = new Rider(5, 50, false);
             sprinterRider.DrawRiders(paper, Color.Red);
-
-            //Rider rollerRider = new Rider(45, 45, true);
-            //sprinterRider.DrawRiders(paper, Color.Blue);
+            //cretaes and draws a roller rider at the start line in bottom column 
+            Rider rollerRider = new Rider(50, 50, true);
+            rollerRider.DrawRiders(paper, Color.Blue);
         }
 
+        /// <summary>
+        /// creates a new deck of sprinter cards and displays the hand
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSprinter_Click(object sender, EventArgs e)
         {
             //creates the deck of sprinter cards. 
@@ -119,6 +124,11 @@ namespace Flamme_Rouge
             cardDeck.displayDeck();
         }
 
+        /// <summary>
+        /// creates a new deck of roller cards and tehn displays the hand
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonRoller_Click(object sender, EventArgs e)
         {
             Deck cardDeck = new Deck(true, false);
@@ -134,6 +144,21 @@ namespace Flamme_Rouge
 
         }
 
+        //private void createPlayer(Graphics paper, int numPlayers)
+        //{
+        //    int xpos = 5;
+        //    int ypos = 5;
+        //    int adder = 45;
+
+        //    for (int i = 1; i <= numPlayers; i++)
+        //    {
+        //        Rider sprinterRider = new Rider(xpos, ypos + (adder * i-1), false);
+        //        sprinterRider.DrawRiders(paper, Color.Red);
+
+        //        Rider rollerRider = new Rider(xpos + (adder * i), ypos + (adder * i-1), true);
+        //        rollerRider.DrawRiders(paper, Color.Blue);
+        //    }
+        //}
       
     }
 }
