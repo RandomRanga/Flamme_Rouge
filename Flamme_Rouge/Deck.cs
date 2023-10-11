@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Flamme_Rouge
 {
-    public class Deck
+    public class Deck 
     {
         //instant vaiables
         /// <summary>

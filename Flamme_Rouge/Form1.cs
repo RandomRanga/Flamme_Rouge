@@ -23,17 +23,6 @@ namespace Flamme_Rouge
             InitializeComponent();                    
         }
     
-        private void pictureBoxDraw_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Form1_Load_1(object sender, EventArgs e)
-        {
-            
-
-        }
-
         /// <summary>
         /// creates the track when the button is clicked. 
         /// NEED TO PUT INTO FORM1_LOAD.
@@ -49,7 +38,7 @@ namespace Flamme_Rouge
             int xpos = 0;
 
             //creates the start line and squares before start line 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Square flatSquare = new Square("start", 0, 100);
                 track.Add(flatSquare);
@@ -63,7 +52,7 @@ namespace Flamme_Rouge
             Random random = new Random();
 
             //loop to stop repeative code of creting flat squares 
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < 21; i++)
             {
                 //creates a random number used to pick if it is flat, uphill, or downhill
                 int rand = random.Next(1, 5);
@@ -113,6 +102,13 @@ namespace Flamme_Rouge
             //draws the outline of the track 
             Pen pen1 = new Pen(Color.Blue, 1);
             paper.DrawRectangle(pen1, 0, 0, pictureBoxDraw.Width - 2, pictureBoxDraw.Height - 2);
+
+
+            Rider sprinterRider = new Rider(5, 5, false);
+            sprinterRider.DrawRiders(paper, Color.Red);
+
+            //Rider rollerRider = new Rider(45, 45, true);
+            //sprinterRider.DrawRiders(paper, Color.Blue);
         }
 
         private void buttonSprinter_Click(object sender, EventArgs e)

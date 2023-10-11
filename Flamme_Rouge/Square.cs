@@ -88,9 +88,9 @@ namespace Flamme_Rouge
             //creates a brush with color depending on track type. 
             SolidBrush br = new SolidBrush(color);
             //draws the top square at correct xpos and with correct color.  
-            paper.FillRectangle(br, xpos, 0, 40, 50);
+            paper.FillRectangle(br, xpos, 0, 40, 40);
             //draws another rectangle below it, could have made a loop have ever overkill for this track. 
-            paper.FillRectangle(br, xpos, 55, 40, 50);
+            paper.FillRectangle(br, xpos, 45, 40, 40);
         }
 
 

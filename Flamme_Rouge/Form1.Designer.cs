@@ -32,11 +32,11 @@
             this.buttonDrawTrack = new System.Windows.Forms.Button();
             this.buttonSprinter = new System.Windows.Forms.Button();
             this.buttonRoller = new System.Windows.Forms.Button();
-            this.buttonSprinterExhaustion = new System.Windows.Forms.Button();
-            this.buttonRollerExhaustion = new System.Windows.Forms.Button();
             this.listBoxCards = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDraw)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +47,6 @@
             this.pictureBoxDraw.Size = new System.Drawing.Size(1680, 144);
             this.pictureBoxDraw.TabIndex = 1;
             this.pictureBoxDraw.TabStop = false;
-            this.pictureBoxDraw.Click += new System.EventHandler(this.pictureBoxDraw_Click);
             // 
             // buttonDrawTrack
             // 
@@ -79,34 +78,15 @@
             this.buttonRoller.UseVisualStyleBackColor = true;
             this.buttonRoller.Click += new System.EventHandler(this.buttonRoller_Click);
             // 
-            // buttonSprinterExhaustion
-            // 
-            this.buttonSprinterExhaustion.Location = new System.Drawing.Point(770, 320);
-            this.buttonSprinterExhaustion.Name = "buttonSprinterExhaustion";
-            this.buttonSprinterExhaustion.Size = new System.Drawing.Size(117, 204);
-            this.buttonSprinterExhaustion.TabIndex = 6;
-            this.buttonSprinterExhaustion.Text = "Draw Sprinter Exhaustion Card";
-            this.buttonSprinterExhaustion.UseVisualStyleBackColor = true;
-            // 
-            // buttonRollerExhaustion
-            // 
-            this.buttonRollerExhaustion.Location = new System.Drawing.Point(893, 320);
-            this.buttonRollerExhaustion.Name = "buttonRollerExhaustion";
-            this.buttonRollerExhaustion.Size = new System.Drawing.Size(117, 204);
-            this.buttonRollerExhaustion.TabIndex = 7;
-            this.buttonRollerExhaustion.Text = "Draw Roller Exhaustion Card";
-            this.buttonRollerExhaustion.UseVisualStyleBackColor = true;
-            // 
             // listBoxCards
             // 
             this.listBoxCards.FormattingEnabled = true;
             this.listBoxCards.ItemHeight = 16;
-            this.listBoxCards.Location = new System.Drawing.Point(424, 320);
+            this.listBoxCards.Location = new System.Drawing.Point(424, 376);
             this.listBoxCards.Name = "listBoxCards";
-            this.listBoxCards.Size = new System.Drawing.Size(150, 164);
+            this.listBoxCards.Size = new System.Drawing.Size(179, 148);
             this.listBoxCards.TabIndex = 8;
             this.listBoxCards.SelectedIndexChanged += new System.EventHandler(this.listBoxCards_SelectedIndexChanged);
-            //this.listBoxCards.SelectedValueChanged += new System.EventHandler(this.listBoxCards_SelectedValueChanged);
             // 
             // label1
             // 
@@ -128,23 +108,40 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "B";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(421, 320);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(148, 32);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Click on which card you \r\nwould like to play.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(48, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(148, 32);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Red inside is a Sprinter \r\nBlue inside is a Roller\r\n";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 536);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxCards);
-            this.Controls.Add(this.buttonRollerExhaustion);
-            this.Controls.Add(this.buttonSprinterExhaustion);
             this.Controls.Add(this.buttonRoller);
             this.Controls.Add(this.buttonSprinter);
             this.Controls.Add(this.buttonDrawTrack);
             this.Controls.Add(this.pictureBoxDraw);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDraw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -156,11 +153,11 @@
         private System.Windows.Forms.Button buttonDrawTrack;
         private System.Windows.Forms.Button buttonSprinter;
         private System.Windows.Forms.Button buttonRoller;
-        private System.Windows.Forms.Button buttonSprinterExhaustion;
-        private System.Windows.Forms.Button buttonRollerExhaustion;
         private System.Windows.Forms.ListBox listBoxCards;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
