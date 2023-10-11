@@ -34,12 +34,15 @@
             this.buttonRoller = new System.Windows.Forms.Button();
             this.buttonSprinterExhaustion = new System.Windows.Forms.Button();
             this.buttonRollerExhaustion = new System.Windows.Forms.Button();
+            this.listBoxCards = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDraw)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxDraw
             // 
-            this.pictureBoxDraw.Location = new System.Drawing.Point(39, 136);
+            this.pictureBoxDraw.Location = new System.Drawing.Point(51, 170);
             this.pictureBoxDraw.Name = "pictureBoxDraw";
             this.pictureBoxDraw.Size = new System.Drawing.Size(1680, 144);
             this.pictureBoxDraw.TabIndex = 1;
@@ -58,21 +61,23 @@
             // 
             // buttonSprinter
             // 
-            this.buttonSprinter.Location = new System.Drawing.Point(264, 320);
+            this.buttonSprinter.Location = new System.Drawing.Point(166, 320);
             this.buttonSprinter.Name = "buttonSprinter";
             this.buttonSprinter.Size = new System.Drawing.Size(117, 204);
             this.buttonSprinter.TabIndex = 4;
-            this.buttonSprinter.Text = "Draw Sprinter Card";
+            this.buttonSprinter.Text = "Draw Sprinter Cards";
             this.buttonSprinter.UseVisualStyleBackColor = true;
+            this.buttonSprinter.Click += new System.EventHandler(this.buttonSprinter_Click);
             // 
             // buttonRoller
             // 
-            this.buttonRoller.Location = new System.Drawing.Point(387, 320);
+            this.buttonRoller.Location = new System.Drawing.Point(289, 320);
             this.buttonRoller.Name = "buttonRoller";
             this.buttonRoller.Size = new System.Drawing.Size(117, 204);
             this.buttonRoller.TabIndex = 5;
-            this.buttonRoller.Text = "Draw Roller Card";
+            this.buttonRoller.Text = "Draw Roller Cards";
             this.buttonRoller.UseVisualStyleBackColor = true;
+            this.buttonRoller.Click += new System.EventHandler(this.buttonRoller_Click);
             // 
             // buttonSprinterExhaustion
             // 
@@ -92,11 +97,45 @@
             this.buttonRollerExhaustion.Text = "Draw Roller Exhaustion Card";
             this.buttonRollerExhaustion.UseVisualStyleBackColor = true;
             // 
+            // listBoxCards
+            // 
+            this.listBoxCards.FormattingEnabled = true;
+            this.listBoxCards.ItemHeight = 16;
+            this.listBoxCards.Location = new System.Drawing.Point(424, 320);
+            this.listBoxCards.Name = "listBoxCards";
+            this.listBoxCards.Size = new System.Drawing.Size(150, 164);
+            this.listBoxCards.TabIndex = 8;
+            this.listBoxCards.SelectedIndexChanged += new System.EventHandler(this.listBoxCards_SelectedIndexChanged);
+            //this.listBoxCards.SelectedValueChanged += new System.EventHandler(this.listBoxCards_SelectedValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.888F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 179);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 44);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "A";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.888F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(0, 251);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 44);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "B";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 536);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBoxCards);
             this.Controls.Add(this.buttonRollerExhaustion);
             this.Controls.Add(this.buttonSprinterExhaustion);
             this.Controls.Add(this.buttonRoller);
@@ -108,6 +147,7 @@
             this.Load += new System.EventHandler(this.Form1_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDraw)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,6 +158,9 @@
         private System.Windows.Forms.Button buttonRoller;
         private System.Windows.Forms.Button buttonSprinterExhaustion;
         private System.Windows.Forms.Button buttonRollerExhaustion;
+        private System.Windows.Forms.ListBox listBoxCards;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

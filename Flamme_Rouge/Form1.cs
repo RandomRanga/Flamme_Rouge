@@ -15,14 +15,12 @@ namespace Flamme_Rouge
     public partial class Form1 : Form
     {
         //creates list of squares for the track
-        List<Square> track = new List<Square>();
-
-        //creates a list of cards for each deck
-
+        List<Square> track = new List<Square>();     
+        
 
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();                    
         }
     
         private void pictureBoxDraw_Click(object sender, EventArgs e)
@@ -47,17 +45,19 @@ namespace Flamme_Rouge
 
             //creates the graphics for the track
             Graphics paper = pictureBoxDraw.CreateGraphics();
+            //holds the x pos of the squares.
+            int xpos = 0;
 
-            //creates squares before the start line for them to line up on.
-            for (int i = 0; i < 4; i++)
+            //creates the start line and squares before start line 
+            for (int i = 0; i < 5; i++)
             {
                 Square flatSquare = new Square("start", 0, 100);
                 track.Add(flatSquare);
             }
 
             //create a start square and add to list 
-            Square startSquare = new Square("start", 0, 100);
-            track.Add(startSquare);
+            //Square startSquare = new Square("start", 0, 100);
+            //track.Add(startSquare);
 
             //creates a Random object 
             Random random = new Random();
@@ -91,18 +91,17 @@ namespace Flamme_Rouge
 
             }
             //creates the finishing square and adds it to the list
-            Square endSquare = new Square("end", 0, 10);
-            track.Add(endSquare);
+            //Square endSquare = new Square("end", 0, 10);
+            //track.Add(endSquare);
 
-            //creates squares after the finish line to see who goes the futhest
-            for (int i = 0; i < 4; i++)
+            //creates the finish line and squares after to see who goes the futherest
+            for (int i = 0; i < 5; i++)
             {
                 Square flatSquare = new Square("end", 0, 10);
                 track.Add(flatSquare);
             }
-
-
-            int xpos = 0;
+            
+            
             //draws each of the squares in the list and 
             //after each one moves over 45
             foreach (Square s in track)
@@ -111,12 +110,34 @@ namespace Flamme_Rouge
                 xpos += 45;
             }
 
-
             //draws the outline of the track 
             Pen pen1 = new Pen(Color.Blue, 1);
             paper.DrawRectangle(pen1, 0, 0, pictureBoxDraw.Width - 2, pictureBoxDraw.Height - 2);
+        }
+
+        private void buttonSprinter_Click(object sender, EventArgs e)
+        {
+            //creates the deck of sprinter cards. 
+            Deck cardDeck = new Deck(false, false);
+            cardDeck.dealHand(listBoxCards);
+            cardDeck.displayDeck();
+        }
+
+        private void buttonRoller_Click(object sender, EventArgs e)
+        {
+            Deck cardDeck = new Deck(true, false);
+            cardDeck.dealHand(listBoxCards);
+            cardDeck.displayDeck();
+        }
+
+        private void listBoxCards_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("you rider moves " + listBoxCards.SelectedItem.ToString());
+
 
 
         }
+
+      
     }
 }
