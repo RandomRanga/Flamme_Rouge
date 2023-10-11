@@ -36,60 +36,46 @@ namespace Flamme_Rouge
             Graphics paper = pictureBoxDraw.CreateGraphics();
             //holds the x pos of the squares.
             int xpos = 0;
+            //how long you want the track
+            int trackLength = 28;
 
-            //creates the start line and squares before start line 
-            for (int i = 0; i < 2; i++)
+
+            //draws the track based on what square it is drawing. 
+            for (int i  = 1; i <= trackLength; i++)
             {
-                Square flatSquare = new Square("start", 0, 100);
-                track.Add(flatSquare);
-            }
-
-            //create a start square and add to list 
-            //Square startSquare = new Square("start", 0, 100);
-            //track.Add(startSquare);
-
-            //creates a Random object 
-            Random random = new Random();
-
-            //loop to stop repeative code of creting flat squares 
-            for (int i = 0; i < 21; i++)
-            {
-                //creates a random number used to pick if it is flat, uphill, or downhill
-                int rand = random.Next(1, 5);
-                //creates a local variable to hold what type of track it is.
-                string type;
-
-                //checks what the random number is then sets that to a type 
-                //allowing for a different board everytime the game is played. 
-                if (rand == 1)
+                //draws start squares
+                if (i <= 2)
                 {
-                    type = "downhill";
+                    Square startSquare = new Square("start", 0, 100);
+                    track.Add(startSquare);
                 }
-                else if (rand == 2)
+                //draws uphill 
+                else if (i >= 6 && i <= 9)
                 {
-                    type = "uphill";
+                    Square uphillSquare = new Square("uphill", 0, 10);
+                    track.Add(uphillSquare);
                 }
+                //draws downhill
+                else if (i >= 14 && i <= 18)
+                {
+                    Square downhillSquare = new Square("downhill", 0, 10);
+                    track.Add(downhillSquare);
+                }
+                //draws end squares
+                else if ( i >= 25)
+                {
+                    Square endSquare = new Square("end", 0, 10);
+                    track.Add(endSquare);
+
+                }
+                //draws all flat squares on unoccupided squares
                 else
                 {
-                    type = "flat";
+                    Square flatSquare = new Square("flat", 0, 10);
+                    track.Add(flatSquare);
                 }
-
-                //creates middle of the track flat and adds to list
-                Square randomSquare = new Square(type, 0, 10);
-                track.Add(randomSquare);
-
             }
-            //creates the finishing square and adds it to the list
-            //Square endSquare = new Square("end", 0, 10);
-            //track.Add(endSquare);
 
-            //creates the finish line and squares after to see who goes the futherest
-            for (int i = 0; i < 5; i++)
-            {
-                Square flatSquare = new Square("end", 0, 10);
-                track.Add(flatSquare);
-            }
-            
             
             //draws each of the squares in the list and 
             //after each one moves over 45
@@ -136,6 +122,11 @@ namespace Flamme_Rouge
             cardDeck.displayDeck();
         }
 
+        /// <summary>
+        /// displays which rider moves where.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBoxCards_SelectedIndexChanged(object sender, EventArgs e)
         {
             MessageBox.Show("you rider moves " + listBoxCards.SelectedItem.ToString());
@@ -143,7 +134,7 @@ namespace Flamme_Rouge
 
 
         }
-
+        
         //private void createPlayer(Graphics paper, int numPlayers)
         //{
         //    int xpos = 5;
