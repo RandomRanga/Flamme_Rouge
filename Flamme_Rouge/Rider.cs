@@ -24,6 +24,12 @@ namespace Flamme_Rouge
         /// </summary>
         private bool _isRoller;
 
+        /// <summary>
+        /// constucts the rider objects 
+        /// </summary>
+        /// <param name="xpos"></param>
+        /// <param name="ypos"></param>
+        /// <param name="isRoller"></param>
         public Rider(int xpos, int ypos, bool isRoller)
         {
             _xpos = xpos;
@@ -33,7 +39,11 @@ namespace Flamme_Rouge
 
 
 
-        //draw mehtod
+        /// <summary>
+        /// draws each rider at the correct location with the correct color. 
+        /// </summary>
+        /// <param name="paper"></param>
+        /// <param name="color">the inside color of the riders</param>
         public void DrawRiders(Graphics paper, Color color)
         {                 
             SolidBrush br = new SolidBrush(color);
@@ -46,38 +56,26 @@ namespace Flamme_Rouge
         }
 
         /// <summary>
-        /// moves the rider based on the card selected. 
+        /// moves the roller rider the correct distance. 
         /// </summary>
-        /// <param name="xcur"></param>
-        /// <param name="ycur"></param>
-        /// <returns></returns>
-        public void moveRider(string card, int moveSquares)
+        /// <param name="moveSquares">amount of squares for the roller to move.</param>
+        public void moveRoller(int moveSquares)
         {
-            
-            string[] cardArray = card.Split(',');
-
-            if(cardArray[0] == "Roller")
-            {
-                _xpos += (moveSquares * 45);
-
-            }
-            else if (cardArray[0] == "Sprinter")
-            {
-
-            }
-            else
-            {
-                MessageBox.Show(" Sorry something has gone wrong please try again.");
-            }
-
-
-
-            
-
-
-
-          
+            _xpos += (moveSquares * 45);          
         }
+
+        /// <summary>
+        /// moves the sprinter rider the correct distance. 
+        /// </summary>
+        /// <param name="moveSquares">amount of squares for the sprinter to move.</param>
+        public void moveSprinter(int moveSquares)
+        {
+           _xpos += (moveSquares * 45);
+        }
+
+
+
+
 
 
 

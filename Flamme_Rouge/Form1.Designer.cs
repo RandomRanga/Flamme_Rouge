@@ -56,7 +56,7 @@
             this.buttonDrawTrack.TabIndex = 2;
             this.buttonDrawTrack.Text = "Draw Track";
             this.buttonDrawTrack.UseVisualStyleBackColor = true;
-            this.buttonDrawTrack.Click += new System.EventHandler(this.buttonDrawTrack_Click);
+            //this.buttonDrawTrack.Click += new System.EventHandler(this.buttonDrawTrack_Click);
             // 
             // buttonSprinter
             // 
