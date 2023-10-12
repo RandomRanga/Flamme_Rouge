@@ -46,20 +46,20 @@ namespace Flamme_Rouge
         }
 
         /// <summary>
-        /// moves the rider based on the 
+        /// moves the rider based on the card selected. 
         /// </summary>
         /// <param name="xcur"></param>
         /// <param name="ycur"></param>
         /// <returns></returns>
-        public int moveRider(string card,int xcur, int moveSquares)
+        public void moveRider(string card, int moveSquares)
         {
-
+            
             string[] cardArray = card.Split(',');
 
             if(cardArray[0] == "Roller")
             {
-                xcur += 45;
-                
+                _xpos += (moveSquares * 45);
+
             }
             else if (cardArray[0] == "Sprinter")
             {
@@ -72,12 +72,11 @@ namespace Flamme_Rouge
 
 
 
-            //xcur += (moveSquares * 45);
-
-
-
             
-            return xcur;
+
+
+
+          
         }
 
 

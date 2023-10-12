@@ -142,6 +142,7 @@
             this.Controls.Add(this.pictureBoxDraw);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDraw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

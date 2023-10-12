@@ -43,70 +43,70 @@ namespace Flamme_Rouge
         /// <param name="e"></param>
         private void buttonDrawTrack_Click(object sender, EventArgs e)
         {
-            //creates the graphics for the track
-            paper = pictureBoxDraw.CreateGraphics();
+        //    //creates the graphics for the track
+        //    paper = pictureBoxDraw.CreateGraphics();
 
-            //holds the x pos of the squares.
-            int xpos = 0;
-            //how long you want the track
-            int trackLength = 28;
+        //    //holds the x pos of the squares.
+        //    int xpos = 0;
+        //    //how long you want the track
+        //    int trackLength = 28;
 
 
-            //draws the track based on what square it is drawing. 
-            for (int i  = 1; i <= trackLength; i++)
-            {
-                //draws start squares
-                if (i <= 2)
-                {
-                    Square startSquare = new Square("start", 0, 100);
-                    track.Add(startSquare);
-                }
-                //draws uphill 
-                else if (i >= 6 && i <= 9)
-                {
-                    Square uphillSquare = new Square("uphill", 0, 10);
-                    track.Add(uphillSquare);
-                }
-                //draws downhill
-                else if (i >= 14 && i <= 18)
-                {
-                    Square downhillSquare = new Square("downhill", 0, 10);
-                    track.Add(downhillSquare);
-                }
-                //draws end squares
-                else if ( i >= 25)
-                {
-                    Square endSquare = new Square("end", 0, 10);
-                    track.Add(endSquare);
+        //    //draws the track based on what square it is drawing. 
+        //    for (int i  = 1; i <= trackLength; i++)
+        //    {
+        //        //draws start squares
+        //        if (i <= 2)
+        //        {
+        //            Square startSquare = new Square("start", 0, 100);
+        //            track.Add(startSquare);
+        //        }
+        //        //draws uphill 
+        //        else if (i >= 6 && i <= 9)
+        //        {
+        //            Square uphillSquare = new Square("uphill", 0, 10);
+        //            track.Add(uphillSquare);
+        //        }
+        //        //draws downhill
+        //        else if (i >= 14 && i <= 18)
+        //        {
+        //            Square downhillSquare = new Square("downhill", 0, 10);
+        //            track.Add(downhillSquare);
+        //        }
+        //        //draws end squares
+        //        else if ( i >= 25)
+        //        {
+        //            Square endSquare = new Square("end", 0, 10);
+        //            track.Add(endSquare);
 
-                }
-                //draws all flat squares on unoccupided squares
-                else
-                {
-                    Square flatSquare = new Square("flat", 0, 10);
-                    track.Add(flatSquare);
-                }
-            }
+        //        }
+        //        //draws all flat squares on unoccupided squares
+        //        else
+        //        {
+        //            Square flatSquare = new Square("flat", 0, 10);
+        //            track.Add(flatSquare);
+        //        }
+        //    }
 
             
-            //draws each of the squares in the list and 
-            //after each one moves over 45
-            foreach (Square s in track)
-            {
-                s.DrawSquare(paper, xpos);
-                xpos += 45;
-            }
+        //    //draws each of the squares in the list and 
+        //    //after each one moves over 45
+        //    foreach (Square s in track)
+        //    {
+        //        s.DrawSquare(paper, xpos);
+        //        xpos += 45;
+        //    }
 
-            //draws the outline of the track 
-            Pen pen1 = new Pen(Color.Blue, 1);
-            paper.DrawRectangle(pen1, 0, 0, pictureBoxDraw.Width - 2, pictureBoxDraw.Height - 2);
+        //    //draws the outline of the track 
+        //    Pen pen1 = new Pen(Color.Blue, 1);
+        //    paper.DrawRectangle(pen1, 0, 0, pictureBoxDraw.Width - 2, pictureBoxDraw.Height - 2);
 
-            //cretaes and draws a sprinter rider at the start line in bottom column 
-            sprinterRider = new Rider(xcur, ycur, false);
-            sprinterRider.DrawRiders(paper, Color.Red);
-            //cretaes and draws a roller rider at the start line in bottom column 
-            rollerRider = new Rider(xcur + length, ycur, true);
-            rollerRider.DrawRiders(paper, Color.Blue);
+        //    //cretaes and draws a sprinter rider at the start line in bottom column 
+        //    sprinterRider = new Rider(xcur, ycur, false);
+        //    sprinterRider.DrawRiders(paper, Color.Red);
+        //    //cretaes and draws a roller rider at the start line in bottom column 
+        //    rollerRider = new Rider(xcur + length, ycur, true);
+        //    rollerRider.DrawRiders(paper, Color.Blue);
 
         }
 
@@ -150,18 +150,104 @@ namespace Flamme_Rouge
             paper = pictureBoxDraw.CreateGraphics();
 
 
-            xcur = rollerRider.moveRider(card, xcur, 1);
+            rollerRider.moveRider(card, 1);
+
             
-            //cretaes and draws a roller rider at the start line in bottom column 
-            rollerRider = new Rider(xcur, ycur, true);
+            //draws a roller rider at the start line in bottom column 
+            
             rollerRider.DrawRiders(paper, Color.Blue);
 
-
+            this.Invalidate();
             
 
 
         }
-        
+        /// <summary>
+        /// creates the track when the button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+
+            //creates the graphics for the track
+            paper = pictureBoxDraw.CreateGraphics();
+
+            //holds the x pos of the squares.
+            int xpos = 0;
+            //how long you want the track
+            int trackLength = 28;
+
+
+            //draws the track based on what square it is drawing. 
+            for (int i = 1; i <= trackLength; i++)
+            {
+                //draws start squares
+                if (i <= 2)
+                {
+                    Square startSquare = new Square("start", 0, 100);
+                    track.Add(startSquare);
+                }
+                //draws uphill 
+                else if (i >= 6 && i <= 9)
+                {
+                    Square uphillSquare = new Square("uphill", 0, 10);
+                    track.Add(uphillSquare);
+                }
+                //draws downhill
+                else if (i >= 14 && i <= 18)
+                {
+                    Square downhillSquare = new Square("downhill", 0, 10);
+                    track.Add(downhillSquare);
+                }
+                //draws end squares
+                else if (i >= 25)
+                {
+                    Square endSquare = new Square("end", 0, 10);
+                    track.Add(endSquare);
+
+                }
+                //draws all flat squares on unoccupided squares
+                else
+                {
+                    Square flatSquare = new Square("flat", 0, 10);
+                    track.Add(flatSquare);
+                }
+            }
+
+
+            //draws each of the squares in the list and 
+            //after each one moves over 45
+            foreach (Square s in track)
+            {
+                s.DrawSquare(paper, xpos);
+                xpos += 45;
+            }
+
+            //draws the outline of the track 
+            Pen pen1 = new Pen(Color.Blue, 1);
+            paper.DrawRectangle(pen1, 0, 0, pictureBoxDraw.Width - 2, pictureBoxDraw.Height - 2);
+
+            if (sprinterRider == null)
+            {
+                //cretaes and draws a sprinter rider at the start line in bottom column 
+                sprinterRider = new Rider(xcur, ycur, false);
+                
+            }
+            sprinterRider.DrawRiders(paper, Color.Red);
+            if (rollerRider == null)
+            {
+                //cretaes and draws a roller rider at the start line in bottom column 
+                rollerRider = new Rider(xcur + length, ycur, true);
+                
+            }
+            rollerRider.DrawRiders(paper, Color.Blue);
+
+
+
+
+        }
+
         //private void createPlayer(Graphics paper, int numPlayers)
         //{
         //    int xpos = 5;
@@ -177,6 +263,6 @@ namespace Flamme_Rouge
         //        rollerRider.DrawRiders(paper, Color.Blue);
         //    }
         //}
-      
+
     }
 }
