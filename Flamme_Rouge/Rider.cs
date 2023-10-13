@@ -14,7 +14,7 @@ namespace Flamme_Rouge
         /// <summary>
         /// holds the x pos of the rider 
         /// </summary>
-        private int _xpos;
+        public int _xpos;
         /// <summary>
         /// holds the y pos of the rider
         /// </summary>
@@ -37,7 +37,7 @@ namespace Flamme_Rouge
             _isRoller = isRoller;
         }
 
-
+        
 
         /// <summary>
         /// draws each rider at the correct location with the correct color. 
@@ -45,9 +45,9 @@ namespace Flamme_Rouge
         /// <param name="paper"></param>
         /// <param name="color">the inside color of the riders</param>
         public void DrawRiders(Graphics paper, Color color)
-        {                 
+        {
             SolidBrush br = new SolidBrush(color);
-            Pen pen1 = new Pen(Color.Black,4);
+            Pen pen1 = new Pen(Color.Black, 4);
 
             //draws the top left rider at correct xpos and with correct color.  
             paper.FillRectangle(br, _xpos, _ypos, 30, 30);
@@ -61,7 +61,7 @@ namespace Flamme_Rouge
         /// <param name="moveSquares">amount of squares for the roller to move.</param>
         public void moveRoller(int moveSquares)
         {
-            _xpos += (moveSquares * 45);          
+            _xpos += (moveSquares * 45);
         }
 
         /// <summary>
@@ -70,9 +70,10 @@ namespace Flamme_Rouge
         /// <param name="moveSquares">amount of squares for the sprinter to move.</param>
         public void moveSprinter(int moveSquares)
         {
-           _xpos += (moveSquares * 45);
+            _xpos += (moveSquares * 45);
         }
 
+        
 
 
 

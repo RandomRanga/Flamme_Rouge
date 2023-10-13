@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,11 +15,15 @@ namespace Flamme_Rouge
         /// <summary>
         /// holds a list of cards 
         /// </summary>
-        private List<Card> _cardList;
+        private List<Card> _cardList = new List<Card>();
         /// <summary>
         /// holds each new hand of cards
         /// </summary>
         private List<Card> _handList = new List<Card>();
+        /// <summary>
+        /// holds all the recyled cards in a list. 
+        /// </summary>
+        List<Card> _recyledDeck = new List<Card>();
         /// <summary>
         /// random variable to shuffle cards
         /// </summary>
@@ -82,19 +87,51 @@ namespace Flamme_Rouge
             ShuffleDeck();
             ///clears the list box
             listBoxCards.Items.Clear();
+
+            int j = -1;
             // picks the first 4 cards of the list and adds them to the hand list. 
             for (int i = 0; i < 4; i++)
             {
-                Card c = _cardList[i];
+                //Checks if card list is empty if it is runs the recyleddeck and adds it to the hand list                 
+                if (_cardList.Count > 0)
+                {
 
-                _handList.Add(c);
+                    Card c = _cardList[i-i];
+                    
+                    //adds each card to the handlist. 
+                    _handList.Add(c);
+                    //removes each card in the hand from the deck. 
+                    _cardList.Remove(c);
+                    //adds each card in the hand to the recyled deck. 
+                    _recyledDeck.Add(c);
+                    j++;
+                }
+
+                //
+                else
+                {
+                    Card recyledCard = _recyledDeck[i - j];
+
+                    _handList.Add(recyledCard);
+                }
+
+
             }
-            
             //for each card in the hand list it is displayed in the list box. 
-            foreach (Card c in _handList)
+            
+            for( int i  = 0; i < 4;i++) 
             {
-                listBoxCards.Items.Add(c);
-            }                      
+                //adds each drawn card to the hand. 
+                listBoxCards.Items.Add(_handList[0]);
+                
+                
+                
+                
+
+                _handList.Remove(_handList[0]);
+
+            }    
+            
         }
 
         /// <summary>
@@ -106,17 +143,44 @@ namespace Flamme_Rouge
             int index2;
             Card temp;
 
-            //randomly swaps Cards 100 times 
-            for (int i = 1; i <= 100; i++)
+            //checks to shuffle recyling deck or cardlist. 
+            if (_cardList.Count < 4)
             {
-                //creates 2 random numbers 
-                index1 = _rand.Next(_cardList.Count);
-                index2 = _rand.Next(_cardList.Count);
-                //temperary card to store the card
-                temp = _cardList[index1];
-                _cardList[index1] = _cardList[index2];
-                _cardList[index2] = temp;
+                //randomly swaps Cards 100 times 
+                for (int i = 1; i <= 100; i++)
+                {
+                    //creates 2 random numbers 
+                    index1 = _rand.Next(_recyledDeck.Count);
+                    index2 = _rand.Next(_recyledDeck.Count);
+                    //temperary card to store the card
+                    temp = _recyledDeck[index1];
+                    _recyledDeck[index1] = _recyledDeck[index2];
+                    _recyledDeck[index2] = temp;
+                }
             }
+            else
+            {
+                //still need to remove the choosen card from the deck. 
+                //randomly swaps Cards 100 times 
+                for (int i = 1; i <= 100; i++)
+                {
+                    //creates 2 random numbers 
+                    index1 = _rand.Next(_cardList.Count);
+                    index2 = _rand.Next(_cardList.Count);
+                    //temperary card to store the card
+                    temp = _cardList[index1];
+                    _cardList[index1] = _cardList[index2];
+                    _cardList[index2] = temp;
+                }
+
+            }
+
+
+
         }
+
+       
+
+
     }
 }

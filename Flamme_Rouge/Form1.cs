@@ -23,6 +23,9 @@ namespace Flamme_Rouge
         int xcur = 5;
         int ycur = 50;
         int length = 45;
+        //creates decks for both riders. 
+        Deck rollerCardDeck = new Deck(true, false);
+        Deck sprinterCardDeck = new Deck(false, false);
 
         //creates both riders
         Rider sprinterRider;
@@ -34,29 +37,30 @@ namespace Flamme_Rouge
         {
             InitializeComponent();
         }
-        
+
         /// <summary>
-        /// creates a new deck of sprinter cards and displays the hand
+        /// displays the roller hand of cards 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonSprinter_Click(object sender, EventArgs e)
         {
-            //creates the deck of sprinter cards. 
-            Deck sprinterCardDeck = new Deck(false, false);
+            //displays the hand of cards            
             sprinterCardDeck.dealHand(listBoxCards);
+            //writes the deck to console. 
             sprinterCardDeck.displayDeck();
         }
 
         /// <summary>
-        /// creates a new deck of roller cards and tehn displays the hand
+        /// displays the sprinter hand of cards 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonRoller_Click(object sender, EventArgs e)
-        {
-            Deck rollerCardDeck = new Deck(true, false);
+        {         
+            //displays the hand of cards 
             rollerCardDeck.dealHand(listBoxCards);
+            //writes the deck to console. 
             rollerCardDeck.displayDeck();
         }
 
@@ -69,20 +73,27 @@ namespace Flamme_Rouge
         {         
             //takes the string from list box and turns it into an array.             
             string[] cardArray = listBoxCards.SelectedItem.ToString().Split(',');
-
+            //how many squares the rider should move. 
             int moveSquares = int.Parse(cardArray[1]);
 
-            if (cardArray[0] == "Roller")
-            {
-                rollerRider.moveRoller(moveSquares);   
+            //part of the hills to check where the rider is in the track. 
+            //to know to go fast or slow however doesn't work corretly. 
+            //if (rollerRider._xpos > 250 && rollerRider._xpos < 450)
+            //{
 
-            }
+                //checkes what tpye of card it is then moves the correct rider correct amount of squares. 
+                if (cardArray[0] == "Roller")
+                {
+                    rollerRider.moveRoller(moveSquares);
 
-            if (cardArray[0] == "Sprinter")
-            {
-                sprinterRider.moveSprinter(moveSquares);
+                }
+                if (cardArray[0] == "Sprinter")
+                {
+                    sprinterRider.moveSprinter(moveSquares);
 
-            }
+                }
+            //}
+            //redraws
             this.Invalidate();
         }
 
